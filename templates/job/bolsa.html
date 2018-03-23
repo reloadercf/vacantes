@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{%block content%}
+<div class='jobs_list_container'>
+<h1>Lista de Trabajo</h1>
+<form action="." method="get">
+<input class="uk-input uk-form-width-small" type="text" name="search" value="{{request.GET.search}}">
+<button  class="uk-button uk-button-default" type="submit">Buscar vacante</button>
+</form>
+    <ul>
+    {%for job in jobs%}
+        <li>
+            <a href="{{job.get_absolute_url}}">{{job.name}}</a>
+        </li>
+     {%endfor%}
+    </ul>
+</div>
+{%endblock content%}

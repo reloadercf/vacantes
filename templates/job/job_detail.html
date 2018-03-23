@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+{%block content%}
+<div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
+    <h3 class="uk-card-title">Detalle de la vacante: {{object.name}}t</h3>
+
+   <p><h3>Empresa: {{object.nombre_empresa}}</h3></p>
+    <div class="uk-card uk-card-primary">
+        <p>Salario: {{object.salario}}</p>
+    </div>
+    <dl class="uk-description-list uk-description-list-divider">
+        <dt>Informacion </dt> {{object.descripcion}}
+    </dl>
+</div>
+{%endblock content%}
