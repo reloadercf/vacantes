@@ -10,5 +10,7 @@
     <dl class="uk-description-list uk-description-list-divider">
         <dt>Informacion </dt> {{object.descripcion}}
     </dl>
+    <span uk-icon="icon: file-edit; ratio: 2"><a href="{% url 'bolsadechamba:editar' object.id%}">Editar </a></span>
+    <a href="{%url 'bolsadechamba:delete' object.id%}">Delete</a>
 </div>
 {%endblock content%}

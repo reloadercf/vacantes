@@ -49,3 +49,19 @@ class EmpresaCreate(View):
         if form.is_valid:
             form.save()
         return redirect('company:empresas')
+
+class EmpresaEdit(View):
+    def get(self, request, id):
+        template_name="empresa/empresa_create.html"
+        queryset=Empresa.objects.get(id=id)
+        form = NewEmpresaForm(instance=queryset)
+        context={
+            'form':form
+        }
+        return render(request, template_name, context)
+    def post(self,request,id):
+        queryset=Empresa.objects.get(id=id)
+        form=NewEmpresaForm(request.POST, instance=queryset)
+        if form.is_valid:
+            form.save()
+        return redirect('company:detail',id)

@@ -45,3 +45,25 @@ class JobCreate(View):
         if form.is_valid:
             form.save()
         return redirect('bolsadechamba:job')
+
+class JobEdit(View):
+    def get(self, request, id):
+        template_name="job/job_create.html"
+        queryset=Job.objects.get(id=id)
+        form = NewJobForm(instance=queryset)
+        context={
+            'form':form
+        }
+        return render(request, template_name, context)
+    def post(self,request,id):
+        queryset=Job.objects.get(id=id)
+        form=NewJobForm(request.POST, instance=queryset)
+        if form.is_valid:
+            form.save()
+        return redirect('bolsadechamba:detail',id)
+
+class JobDelete(View):
+    def get(self, request,id):
+        queruset=Job.objects.get(id=id)
+        queruset.delete()
+        return redirect('bolsadechamba:job')
